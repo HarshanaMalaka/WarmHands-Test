@@ -15,11 +15,14 @@ public class LoginPage {
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(xpath = "//a[@class='link btn-a signin']")
+    @FindBy(xpath = "//input[@type='email']")
     WebElement Email;
 
-    @FindBy(xpath = "/input[@placeholder='Enter Password']")
+    @FindBy(xpath = "//input[@placeholder='Enter Password']")
     WebElement Passsword;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    WebElement LoginBtn;
 
 
     public void entEmail(String email){
@@ -28,6 +31,10 @@ public class LoginPage {
 
     public void entPassword(String password){
         Passsword.sendKeys(password);
+    }
+
+    public void LoginBtn(){
+        LoginBtn.click();
     }
 
 
