@@ -33,6 +33,7 @@ public class TC002_LoginTest {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.entEmail("testuserwestern@gmail.com");
         loginPage.entPassword("testpassword");
+        loginPage.LoginBtn();
     }
 
     @AfterMethod
