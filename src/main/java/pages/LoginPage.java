@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class LoginPage {
 
@@ -24,6 +25,9 @@ public class LoginPage {
     @FindBy(xpath = "//button[@type='submit']")
     WebElement LoginBtn;
 
+    @FindBy(xpath = "//a[@class='report-btn']")
+    WebElement VerifyBtn;
+
 
     public void entEmail(String email){
         Email.sendKeys(email);
@@ -35,6 +39,12 @@ public class LoginPage {
 
     public void LoginBtn(){
         LoginBtn.click();
+    }
+
+    public void VerifyLogin(){
+        String expectedText = "Make Report";
+        String actualTest = VerifyBtn.getText();
+        Assert.assertEquals(actualTest, expectedText);
     }
 
 

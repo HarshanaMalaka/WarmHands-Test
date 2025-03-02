@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 public class RegisterPage {
 
@@ -17,7 +18,7 @@ public class RegisterPage {
     }
 
     @FindBy(xpath = "//input[@name='fname']")
-    WebElement FirstNAme;
+    WebElement FirstName;
 
     @FindBy(xpath = "//input[@name='lname']")
     WebElement LastName;
@@ -55,11 +56,14 @@ public class RegisterPage {
     @FindBy(xpath = "//button[@class='register-btn']")
     WebElement RegisterBtn;
 
+    @FindBy(xpath = "//button[@type='submit']")
+    WebElement VerifyBtn;
+
 
 
     //first name
     public void setFirstName (String fName){
-        FirstNAme.sendKeys(fName);
+        FirstName.sendKeys(fName);
     }
 
     //last name
@@ -87,7 +91,7 @@ public class RegisterPage {
     //city
     public void setCity (){
         Select selectcity = new Select(City);
-        selectcity.selectByVisibleText("Panadura");
+        selectcity.selectByVisibleText("Kalutara");
     }
 
     //nic
@@ -124,6 +128,14 @@ public class RegisterPage {
     //04.click register button
     public void RegisterBtn(){
         RegisterBtn.click();
+    }
+
+    // Verify Registration Functionality
+    public void VerifyRegistration(){
+        String expectedText = "Sign in";
+        String actualText = VerifyBtn.getText();
+        Assert.assertEquals(actualText,expectedText);
+
     }
 
 

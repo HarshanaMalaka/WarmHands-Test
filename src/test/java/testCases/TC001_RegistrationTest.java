@@ -1,29 +1,17 @@
 package testCases;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import base.BaseClass;
+import com.aventstack.chaintest.plugins.ChainTestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.RegisterPage;
-import java.time.Duration;
 
-public class TC001_RegistrationTest {
 
-    WebDriver driver;
-
-    @BeforeMethod
-    public void OpenLink(){
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("http://localhost:5173/");
-
-    }
+public class TC001_RegistrationTest extends BaseClass {
 
     @Test
-    public void TC001()  {
+    public void TC001() throws InterruptedException {
         HomePage homePage = new HomePage(driver);
         homePage.selectRegisterMenu();
 
@@ -42,11 +30,12 @@ public class TC001_RegistrationTest {
         registerPage.setPassword("testpassword");
         registerPage.setConfirmPassword("testpassword");
         registerPage.RegisterBtn();
+        Thread.sleep(1000);
+
+        // Verify Registration Functionality
+        registerPage.VerifyRegistration();
 
     }
 
-    @AfterMethod
-    public void quit(){
-        driver.quit();
-    }
+
 }

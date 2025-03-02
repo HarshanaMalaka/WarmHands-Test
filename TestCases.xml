@@ -2,6 +2,9 @@
 
 <suite name = "Unit Test suite">
 
+    <listeners>
+        <listener class-name="com.aventstack.chaintest.plugins.ChainTestListener"> </listener>
+    </listeners>
 
     <test name = "User Registration">
         <classes>
